@@ -23,7 +23,7 @@
     >
       <el-table-column align="center" label="序号">
         <template slot-scope="scope">
-          {{ scope.row.id }}
+          {{ scope.$index+1 }}
         </template>
       </el-table-column>
       <el-table-column label="产品名称" show-overflow-tooltip>

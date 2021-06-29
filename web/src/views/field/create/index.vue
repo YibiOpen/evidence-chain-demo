@@ -169,7 +169,6 @@ export default {
 <style lang="scss">
 .create-form {
   width: 70%;
-  height: 900px;
   margin: 40px auto;
 
   .el-col .el-form-item__content,

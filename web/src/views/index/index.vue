@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="copyright">
-      CopyRight ©2020 YIBI Evidence BlockChain All Rights Reserved
+      CopyRight ©2021 杭州亦笔科技有限公司
     </div>
   </div>
 </template>
