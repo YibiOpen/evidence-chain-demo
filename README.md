@@ -1,4 +1,4 @@
-# FISCO BCOS Evidence Chain Demo
+# 基于 FISCO BCOS实现的电子存证平台
 由杭州亦笔科技有限公司开发的针对基于 FISCO BCOS 的区块链电子存证平台案例。
 
 ## 1.背景概述
@@ -74,5 +74,190 @@ https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE/install.html
 
 #### 4.2.2查看注册信息
 
+注册完成后，在应用管理菜单下的，应用列表中可以看到创建的区块链电子存证平台应用，点击注册信息，可以获取应用注册信息，如下图的appKey和appSecret。
+
 ![](https://github.com/maochaowu/evidenceImage/blob/main/%E5%AD%98%E8%AF%81%E5%BA%94%E7%94%A8%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF.png?raw=true)
+
+  ### 4.3 区块链电子存证平台部署
+
+区块链电子存证平台代码是基于SpringBoot 2.1.0.RELEASE实现
+
+- 获取源代码
+
+```
+git clone https://github.com/YibiOpen/evidence-chain-demo.git
+```
+
+- 执行sql脚本
+
+```
+在mysql中执行sql脚本，脚本文件在源代码资源db目录下，其中evi_ddl.sql为建表语句、evi_dml.sql为初始化语句
+```
+
+- 修改application.properties配置文件
+
+```
+可以根据实际情况修改应用端口
+server.port=
+
+修改数据库配置
+spring.datasource.username
+spring.datasource.password
+spring.datasource.url
+
+修改WeBASE Front配置
+webase-front.contract.deploy.url
+webase-front.trans.handle.url
+webase-front.trans.query.url
+
+修改WeBASE Node配置
+webase.node.mgr.url
+webase.node.mgr.appKey
+webase.node.mgr.appSecret
+webase.node.mgr.groupId
+webase.node.mgr.linkUrl
+
+修改文件存储目录
+store.dir
+```
+
+- IDE运行
+
+### 4.4.区块链电子存证平台演示
+
+区块链地址存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html
+
+初始用户名和密码分别为：eviAdmin/ABC123
+
+#### 4.4.1首页
+
+如下图所示，首页会显示已存证数量和已上链数量，点击登录按钮，跳转到登录页面。
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%94%B5%E5%AD%90%E5%AD%98%E8%AF%81%E5%B9%B3%E5%8F%B0%E9%A6%96%E9%A1%B5.png?raw=true)
+
+#### 4.4.2登录
+
+登录页面，输入账户名和密码。
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%94%B5%E5%AD%90%E5%AD%98%E8%AF%81%E5%B9%B3%E5%8F%B0%E7%99%BB%E5%BD%95.png?raw=true)
+
+#### 4.4.3合约部署
+
+首次登录，未部署合约时，需要先进行存证合约部署。
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AD%98%E8%AF%81%E5%90%88%E7%BA%A6%E9%83%A8%E7%BD%B2.png?raw=true)
+
+部署完成后，可以在WeBASE中看到对应的合约文件内容
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E5%B7%B2%E9%83%A8%E7%BD%B2%E5%AD%98%E8%AF%81%E5%90%88%E7%BA%A6.png?raw=true)
+
+部署完成后，可以在WeBASE中看到对应的合约列表
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E5%AD%98%E8%AF%81%E5%90%88%E7%BA%A6%E5%88%97%E8%A1%A8.png?raw=true)
+
+#### 4.4.4产品管理
+
+产品管理页面用于展示已经维护好的存证产品，且可以进行新建和修改，一个产品代表了一个实际业务。
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E4%BA%A7%E5%93%81%E7%AE%A1%E7%90%86.png?raw=true)
+
+#### 4.4.5节点管理
+
+产品管理页面用于展示已经维护好的存证节点，且可以进行新建和修改，一个节点代表了一个实际业务下的某个环节或步骤。
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E8%8A%82%E7%82%B9%E7%AE%A1%E7%90%86.png?raw=true)
+
+#### 4.4.6要素管理
+
+要素管理页面用于展示已经维护好的存证要素，且可以进行新建和修改，要素即实际业务下某个环节或步骤在操作过程中会生成的电子数据细项。
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E8%A6%81%E7%B4%A0%E7%AE%A1%E7%90%86.png?raw=true)
+
+#### 4.4.7模拟存证
+
+如下图所示，用于模拟电子数据存证，选择产品、保全点后会动态展示其存证要素，输入存证要素值，可以选择上传存证附件，最后点击提交按钮，完成存证模拟，存证存证后页面跳转到存证管理。
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E6%A8%A1%E6%8B%9F%E5%AD%98%E8%AF%81.png?raw=true)
+
+WeBASE中可以看到调用合约后的交易回执信息
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E4%BA%A4%E6%98%93%E5%9B%9E%E6%89%A7.png?raw=true)
+
+#### 4.4.8存证管理
+
+要素管理页面用于展示已经存证的电子数据，且可以进行查看和核验。
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E5%AD%98%E8%AF%81%E7%AE%A1%E7%90%86.png?raw=true)
+
+#### 4.4.9存证数据查看
+
+存证数据查看会展示出具体的存证要素内容和所有的存证附件。
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E6%9F%A5%E7%9C%8B%E5%AD%98%E8%AF%81%E8%AF%A6%E6%83%85.png?raw=true)
+
+#### 4.4.10存证数据核验
+
+存证数据核验会进行链上数据获取并核对存证数据库中的数据内容。
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E6%A0%B8%E9%AA%8C%E5%AD%98%E8%AF%81%E8%AF%81%E6%8D%AE.png?raw=true)
+
+WeBASE中对应的交易信息
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E4%BA%A4%E6%98%93%E4%BF%A1%E6%81%AF.png?raw=true)
+
+#### 4.4.11用户和合约
+
+如下图展示了个人中心用户信息及存证合约信息
+
+![](https://github.com/maochaowu/evidenceImage/blob/main/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83.png?raw=true)
+
+#### 4.5调用WeBASE组件的接口说明
+
+针对区块链电子合同平台业务运行过程中所调用WeBASE组件的接口列举如下：
+
+- 应用注册
+
+```
+https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE-Node-Manager/appintegration.html#id7
+```
+
+- 新增私钥用户
+
+```
+https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE-Node-Manager/appintegration.html#id53
+```
+
+- 合约部署接口（结合WeBASE-Sign）
+
+```
+https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE-Front/interface.html#webase-sign
+```
+
+- 合约原文保存接口
+
+```
+https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE-Node-Manager/appintegration.html#id80
+```
+
+- 合约地址保存接口
+
+```
+https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE-Node-Manager/appintegration.html#id84
+```
+
+- 交易处理接口（结合WeBASE-Sign）
+
+```
+https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE-Front/interface.html#id375
+```
+
+- 已编码查询交易发送
+
+```
+https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE-Front/interface.html#id393
+```
+
+## 5.总体说明
+
+系统中目前只是简单的实现了数据存证的上下链，针对多方签名暂时还未进行开发。
 
