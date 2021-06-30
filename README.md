@@ -80,7 +80,53 @@ https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE/install.html
 
   ### 4.3 区块链电子存证平台部署
 
-区块链电子存证平台代码是基于SpringBoot 2.1.0.RELEASE实现
+区块链电子存证平台是基于SpringBoot 2.1.0.RELEASE实现
+
+#### 4.3.1发布包部署
+
+- 获取发布包
+
+```
+wget -c https://github.com/YibiOpen/evidence-chain-demo/releases/download/1.0.0/evidnece-chain-demo-1.0.0.tar.gz
+```
+
+- 执行sql脚本
+
+```
+在mysql中执行sql脚本，脚本文件在源代码资源db目录下，其中evi_ddl.sql为建表语句、evi_dml.sql为初始化语句
+```
+
+- 修改conf目录下application.properties配置文件
+
+```
+可以根据实际情况修改应用端口
+server.port=
+
+修改数据库配置
+spring.datasource.username
+spring.datasource.password
+spring.datasource.url
+
+修改WeBASE Front配置
+webase-front.contract.deploy.url
+webase-front.trans.handle.url
+webase-front.trans.query.url
+
+修改WeBASE Node配置
+webase.node.mgr.url
+webase.node.mgr.appKey
+webase.node.mgr.appSecret
+webase.node.mgr.groupId
+webase.node.mgr.linkUrl
+
+修改文件存储目录
+store.dir
+```
+
+- 执行start.sh脚本
+- 访问区块链地址存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html，初始用户名和密码分别为：eviAdmin/ABC123
+
+#### 4.3.2源码部署
 
 - 获取源代码
 
@@ -121,7 +167,7 @@ webase.node.mgr.linkUrl
 store.dir
 ```
 
-- IDE运行
+- 运行程序
 
 ### 4.4.区块链电子存证平台演示
 
