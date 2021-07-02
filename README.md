@@ -92,7 +92,7 @@ https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE/install.html
 - 获取发布包
 
 ```
-wget -c https://github.com/YibiOpen/evidence-chain-demo/releases/download/1.0.0/evidnece-chain-demo-1.0.0.tar.gz
+wget -c https://github.com/YibiOpen/evidence-chain-demo/releases/download/1.0.1/evidnece-chain-demo-1.0.1.tar.gz
 ```
 
 - 执行sql脚本
@@ -139,6 +139,12 @@ store.dir
 git clone https://github.com/YibiOpen/evidence-chain-demo.git
 ```
 
+- 执行mvn打包命令
+
+```
+mvn clean package -DskipTests
+```
+
 - 执行sql脚本
 
 ```
@@ -171,8 +177,6 @@ webase.node.mgr.linkUrl
 修改文件存储目录
 store.dir
 ```
-
-- 运行程序
 
 ### 4.4.区块链电子存证平台演示
 
