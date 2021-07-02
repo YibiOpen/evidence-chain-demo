@@ -19,7 +19,7 @@
 
         <fileSet>
             <directory>${basedir}/target/classes</directory>
-            <outputDirectory>config</outputDirectory>
+            <outputDirectory>conf</outputDirectory>
             <fileMode>0644</fileMode>
             <includes>
                 <include>*.xml</include>
