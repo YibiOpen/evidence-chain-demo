@@ -9,8 +9,8 @@ CREATE TABLE `evi_attach`  (
   `hash_cal` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '附件hash算法',
   `chain_status` tinyint(4) NULL DEFAULT NULL COMMENT '上链状态:0.未上链、1.已上链',
   `chain_address` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '附件上链地址',
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime(0) NULL COMMENT '创建时间',
+  `update_time` datetime(0) NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '存证附件表' ROW_FORMAT = Compact;
 
@@ -22,8 +22,8 @@ CREATE TABLE `evi_contract`  (
   `sign_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'wesign userid',
   `public_key` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'wesign用户公钥信息',
   `private_key` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'wesign用户私钥base64信息',
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime(0) NULL COMMENT '创建时间',
+  `update_time` datetime(0) NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '存证合约表' ROW_FORMAT = Compact;
 
@@ -41,8 +41,8 @@ CREATE TABLE `evi_data_main`  (
   `save_time` datetime(0) NULL DEFAULT NULL COMMENT '存证时间',
   `chain_status` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '上链状态:0.未上链、1.已上链',
   `chain_address` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '上链地址',
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime(0) NULL COMMENT '创建时间',
+  `update_time` datetime(0) NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '存证主数据表' ROW_FORMAT = Compact;
 
@@ -53,8 +53,8 @@ CREATE TABLE `evi_field`  (
   `step_id` int(11) NULL DEFAULT NULL COMMENT '环节id',
   `en_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字段英文名称',
   `ch_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '字段中文名称',
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime(0) NULL COMMENT '创建时间',
+  `update_time` datetime(0) NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '配置要素表' ROW_FORMAT = Compact;
 
@@ -64,8 +64,8 @@ CREATE TABLE `evi_product`  (
   `product_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品名称',
   `product_code` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '产品编码',
   `open_status` tinyint(4) NULL DEFAULT NULL COMMENT '接入状态：1.正常、-1.停止',
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime(0) NULL COMMENT '创建时间',
+  `update_time` datetime(0) NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '配置产品表' ROW_FORMAT = Compact;
 
@@ -76,8 +76,8 @@ CREATE TABLE `evi_step`  (
   `step_name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '环节名称',
   `step_code` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '环节编号',
   `open_status` tinyint(4) NULL DEFAULT NULL COMMENT '接入状态：1.正常、-1.停止',
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime(0) NULL COMMENT '创建时间',
+  `update_time` datetime(0) NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '配置节点表' ROW_FORMAT = Compact;
 
@@ -89,7 +89,7 @@ CREATE TABLE `evi_user`  (
   `sign_user_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'wesign的用户id',
   `public_key` varchar(256) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'wesign用户公钥信息',
   `private_key` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'wesign用户私钥base64信息',
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime(0) NULL COMMENT '创建时间',
+  `update_time` datetime(0) NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '管理用户表' ROW_FORMAT = Compact;
