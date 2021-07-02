@@ -80,9 +80,14 @@ https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE/install.html
 
   ### 4.3 区块链电子存证平台部署
 
-区块链电子存证平台是基于SpringBoot 2.1.0.RELEASE实现
+#### 4.3.1前提条件
 
-#### 4.3.1发布包部署
+| 序号 | 软件               |
+| ---- | ------------------ |
+| 1    | MySQL5.6或以上版本 |
+| 2    | Java8或以上版本    |
+
+#### 4.3.2发布包部署
 
 - 获取发布包
 
@@ -126,7 +131,7 @@ store.dir
 - 执行start.sh脚本
 - 访问区块链地址存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html，初始用户名和密码分别为：eviAdmin/ABC123
 
-#### 4.3.2源码部署
+#### 4.3.3源码部署
 
 - 获取源代码
 

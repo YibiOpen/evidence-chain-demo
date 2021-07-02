@@ -4,7 +4,7 @@
 
     <groupId>com.yibi</groupId>
     <artifactId>evidence-chain-demo</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1</version>
     <name>evidence-chain-demo</name>
 
     <parent>
@@ -157,6 +157,12 @@
             <groupId>org.fisco-bcos</groupId>
             <artifactId>web3sdk</artifactId>
             <version>${web3sdk.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.ethereum</groupId>
+                    <artifactId>solcJ-all</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -207,6 +213,26 @@
                         <exclude>**/logback*.xml</exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptors>
+                        <descriptor>src/main/resources/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

@@ -1,6 +1,5 @@
 package com.yibi.evidence.chain.controller;
 
-import com.yibi.evidence.chain.persist.entity.EviUserEntity;
 import com.yibi.evidence.chain.response.EviResponse;
 import com.yibi.evidence.chain.service.EviUserService;
 import com.yibi.evidence.chain.vo.req.LoginReq;
