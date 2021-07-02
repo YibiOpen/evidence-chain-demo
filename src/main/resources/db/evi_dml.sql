@@ -1,13 +1,13 @@
--- ----用户----
+/*----用户----*/
 INSERT INTO `evi_user`(`id`, `uname`, `pwd`, `sign_user_id`, `public_key`, `private_key`, `create_time`, `update_time`) VALUES (1, 'eviAdmin', 'e0bebd22819993425814866b62701e2919ea26f1370499c1037b53b9d49c2c8a', '', '', '', '2021-06-24 11:34:54', '2021-06-29 10:21:49');
--- ----产品----
+/*----产品----*/
 INSERT INTO `evi_product`(`id`, `product_name`, `product_code`, `open_status`, `create_time`, `update_time`) VALUES (1, '亦笔产品', 'I-001', 1, '2021-06-29 10:47:28', '2021-06-29 10:47:28');
--- ----节点----
+/*----节点----*/
 INSERT INTO `evi_step`(`id`, `product_id`, `step_name`, `step_code`, `open_status`, `create_time`, `update_time`) VALUES (1, 1, '注册', 'X-001', 1, '2021-06-29 10:50:01', '2021-06-29 10:50:01');
 INSERT INTO `evi_step`(`id`, `product_id`, `step_name`, `step_code`, `open_status`, `create_time`, `update_time`) VALUES (2, 1, '授信', 'X-002', 1, '2021-06-29 10:50:13', '2021-06-29 10:50:53');
 INSERT INTO `evi_step`(`id`, `product_id`, `step_name`, `step_code`, `open_status`, `create_time`, `update_time`) VALUES (3, 1, '放款', 'X-003', 1, '2021-06-29 10:50:15', '2021-06-29 10:50:53');
 INSERT INTO `evi_step`(`id`, `product_id`, `step_name`, `step_code`, `open_status`, `create_time`, `update_time`) VALUES (4, 1, '还款', 'X-004', 1, '2021-06-29 10:50:18', '2021-06-29 10:50:55');
--- ----要素----
+/*----要素----*/
 INSERT INTO `evi_field`(`id`, `product_id`, `step_id`, `en_name`, `ch_name`, `create_time`, `update_time`) VALUES (1, 1, 1, 'userName', '用户姓名', '2021-06-29 10:51:07', '2021-06-29 10:51:41');
 INSERT INTO `evi_field`(`id`, `product_id`, `step_id`, `en_name`, `ch_name`, `create_time`, `update_time`) VALUES (2, 1, 1, 'idNo', '身份证号码', '2021-06-29 10:51:43', '2021-06-29 10:53:38');
 INSERT INTO `evi_field`(`id`, `product_id`, `step_id`, `en_name`, `ch_name`, `create_time`, `update_time`) VALUES (3, 1, 1, 'mobileNo', '手机号', '2021-06-29 10:51:43', '2021-06-29 10:53:41');

@@ -157,6 +157,12 @@
             <groupId>org.fisco-bcos</groupId>
             <artifactId>web3sdk</artifactId>
             <version>${web3sdk.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.ethereum</groupId>
+                    <artifactId>solcJ-all</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
