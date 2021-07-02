@@ -92,7 +92,7 @@ https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE/install.html
 - 获取发布包
 
 ```
-wget -c https://github.com/YibiOpen/evidence-chain-demo/releases/download/1.0.1/evidnece-chain-demo-1.0.1.tar.gz
+wget -c https://github.com/YibiOpen/evidence-chain-demo/releases/download/1.0.1/evidence-chain-demo-1.0.1.tar.gz
 ```
 
 - 执行sql脚本
