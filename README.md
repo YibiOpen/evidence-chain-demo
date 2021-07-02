@@ -129,7 +129,7 @@ store.dir
 ```
 
 - 执行start.sh脚本
-- 访问区块链地址存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html，初始用户名和密码分别为：eviAdmin/ABC123
+- 区块链电子存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html，初始用户名和密码分别为：eviAdmin/ABC123
 
 #### 4.3.3源码部署
 
@@ -180,7 +180,7 @@ store.dir
 
 ### 4.4.区块链电子存证平台演示
 
-区块链地址存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html
+区块链电子存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html
 
 初始用户名和密码分别为：eviAdmin/ABC123
 
