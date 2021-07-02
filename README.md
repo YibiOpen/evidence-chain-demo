@@ -82,6 +82,8 @@ https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE/install.html
 
 区块链电子存证平台是基于SpringBoot 2.1.0.RELEASE实现
 
+支持**发布包部署**和**源码部署**
+
 #### 4.3.1发布包部署
 
 - 获取发布包
@@ -117,7 +119,8 @@ webase.node.mgr.url
 webase.node.mgr.appKey
 webase.node.mgr.appSecret
 webase.node.mgr.groupId
-webase.node.mgr.linkUrl
+# 如http://ip:port/evidence/index.html
+webase.node.mgr.linkUrl  
 
 修改文件存储目录
 store.dir
@@ -167,7 +170,11 @@ webase.node.mgr.linkUrl
 store.dir
 ```
 
+
+## todo 缺失mvn打包，运行操作指南
+## todo 缺失前端运行，修改配置操作指南
 - 运行程序
+
 
 ### 4.4.区块链电子存证平台演示
 
