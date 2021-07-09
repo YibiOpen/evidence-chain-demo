@@ -185,9 +185,6 @@ git clone https://github.com/YibiOpen/evidence-chain-demo.git
 
 - 执行sql脚本
 
-```
-在mysql中执行sql脚本，脚本文件在源代码资源db目录下，其中evi_ddl.sql为建表语句、evi_dml.sql为初始化语句
-```
 
 在mysql中执行sql脚本，脚本文件在源代码资源db目录下，其中`evi_ddl.sql`为建表语句、`evi_dml.sql`为初始化语句
 
