@@ -84,7 +84,14 @@ https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE/install.html
 
 支持**发布包部署**和**源码部署**
 
-#### 4.3.1发布包部署
+#### 4.3.1前提条件
+
+| 序号 | 软件               |
+| ---- | ------------------ |
+| 1    | MySQL5.6或以上版本 |
+| 2    | Java8或以上版本    |
+
+#### 4.3.2发布包部署
 
 - 获取发布包，并解压
 
@@ -151,7 +158,6 @@ webase.node.mgr.linkUrl=http://127.0.0.2:9081/evidence/index.html
 store.dir=/data/evidence-chain-demo-master/evi_store
 ```
 
-
 - 启动
 
 回到上一级目录，执行start.sh脚本
@@ -166,9 +172,10 @@ bash start.sh
 tail -f logs/log/evi_chain.log        
 ```
 
-- 访问区块链地址存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html，初始用户名和密码分别为：eviAdmin/ABC123
+- 执行start.sh脚本
+- 区块链电子存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html，初始用户名和密码分别为：eviAdmin/ABC123
 
-#### 4.3.2源码部署
+#### 4.3.3源码部署
 
 - 获取源代码
 
@@ -176,7 +183,11 @@ tail -f logs/log/evi_chain.log
 git clone https://github.com/YibiOpen/evidence-chain-demo.git
 ```
 
-- 初始化数据库，执行sql脚本
+- 执行sql脚本
+
+```
+在mysql中执行sql脚本，脚本文件在源代码资源db目录下，其中evi_ddl.sql为建表语句、evi_dml.sql为初始化语句
+```
 
 在mysql中执行sql脚本，脚本文件在源代码资源db目录下，其中`evi_ddl.sql`为建表语句、`evi_dml.sql`为初始化语句
 
@@ -254,7 +265,7 @@ tail -f logs/log/evi_chain.log
 
 ### 4.4.区块链电子存证平台演示
 
-区块链地址存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html
+区块链电子存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html
 
 初始用户名和密码分别为：eviAdmin/ABC123
 

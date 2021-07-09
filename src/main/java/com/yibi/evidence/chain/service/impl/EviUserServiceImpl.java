@@ -156,7 +156,8 @@ public class EviUserServiceImpl extends ServiceImpl<IEviUserMapper, EviUserEntit
         if (!EviResponse.isOk(response)) {
             return null;
         }
-        RspUserInfo userInfo = webaseClient.newUser(userEntity.getUname());
+        String webaseUserName = userEntity.getUname() + System.currentTimeMillis();
+        RspUserInfo userInfo = webaseClient.newUser(webaseUserName);
         if (ObjectUtil.isNull(userInfo)) {
             log.warn("新增用户私钥失败,userId={}", userId);
             return null;
