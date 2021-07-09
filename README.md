@@ -78,7 +78,11 @@ https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE/install.html
 
 ![](https://github.com/maochaowu/evidenceImage/blob/main/%E5%AD%98%E8%AF%81%E5%BA%94%E7%94%A8%E6%B3%A8%E5%86%8C%E4%BF%A1%E6%81%AF.png?raw=true)
 
-  ### 4.3 区块链电子存证平台部署
+### 4.3 区块链电子存证平台部署
+
+区块链电子存证平台是基于SpringBoot 2.1.0.RELEASE实现（前端页面通过后端直接加载）
+
+支持**发布包部署**和**源码部署**
 
 #### 4.3.1前提条件
 
@@ -89,43 +93,83 @@ https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE/install.html
 
 #### 4.3.2发布包部署
 
-- 获取发布包
+- 获取发布包，并解压
 
 ```
-wget -c https://github.com/YibiOpen/evidence-chain-demo/releases/download/1.0.1/evidence-chain-demo-1.0.1.tar.gz
+wget -c https://github.com/YibiOpen/evidence-chain-demo/releases/download/1.0.0/evidnece-chain-demo-1.0.0.tar.gz
+tar -xvf evidnece-chain-demo-1.0.0.tar.gz
+cd evidnece-chain-demo/
 ```
 
-- 执行sql脚本
+- 初始化数据库，执行sql脚本
 
-```
-在mysql中执行sql脚本，脚本文件在源代码资源db目录下，其中evi_ddl.sql为建表语句、evi_dml.sql为初始化语句
+在mysql中执行sql脚本，脚本文件在源代码资源db目录下，其中`evi_ddl.sql`为建表语句、`evi_dml.sql`为初始化语句
+
+以mysql用户root，密码为123456，创建数据库为`evi_chain`为例
+```Bash
+# 创建DB
+mysql -uroot -p123456 -e "create database evi_chain;"
+# 执行脚本
+cd conf/db/
+# 建表
+mysql -uroot -p123456 -D evi_chain -e "source ./evi_ddl.sql"
+# 插入默认数据
+mysql -uroot -p123456 -D evi_chain -e "source ./evi_dml.sql"
 ```
 
 - 修改conf目录下application.properties配置文件
 
+```Bash
+# 可以根据实际情况修改应用端口
+server.port=9081
+
+### 修改数据库配置
+# mysql用户
+spring.datasource.username=dbUsername
+# mysql密码
+spring.datasource.password=dbPassword
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/evi_chain?autoCommit=false&useUnicode=true&characterEncoding=utf-8\
+  &serverTimezone=Asia/Shanghai
+
+### 修改webase-front服务IP、端口与接口
+# webase前置服务1.2. 合约部署接口（结合WeBASE-Sign）
+webase-front.contract.deploy.url=http://127.0.0.1:5002/WeBASE-Front/contract/deployWithSign
+# webase前置服务5.1. 交易处理接口（结合WeBASE-Sign）
+webase-front.trans.handle.url=http://127.0.0.1:5002/WeBASE-Front/trans/handleWithSign
+# webase前置服务5.4. 已编码查询交易发送
+webase-front.trans.query.url=http://127.0.0.1:5002/WeBASE-Front/trans/query-transaction
+
+# 修改在webase管理台中应用管理生成的配置
+# webase-node-manager后台IP与端口
+webase.node.mgr.url=http://127.0.0.1:5001
+# webase管控台新建应用生成的url地址
+webase.node.mgr.appKey=zhf3mNPA
+# webase管控台新建应用生成的url地址
+webase.node.mgr.appSecret=bn5BRGsNczszJmFT3urrUg6aZmSVf2KS
+# 加密传输
+webase.node.mgr.transferEncrypt=true
+# 默认群组
+webase.node.mgr.groupId=1
+
+# webase应用外链地址，即本项目的前端访问URL，本项目则是http://ip:port/evidence/index.html
+webase.node.mgr.linkUrl=http://127.0.0.2:9081/evidence/index.html
+
+# 存证附件存储目录
+store.dir=/data/evidence-chain-demo-master/evi_store
 ```
-可以根据实际情况修改应用端口
-server.port=
 
-修改数据库配置
-spring.datasource.username
-spring.datasource.password
-spring.datasource.url
+- 启动
 
-修改WeBASE Front配置
-webase-front.contract.deploy.url
-webase-front.trans.handle.url
-webase-front.trans.query.url
+回到上一级目录，执行start.sh脚本
+```Bash
+cd ../
+bash start.sh
+```
 
-修改WeBASE Node配置
-webase.node.mgr.url
-webase.node.mgr.appKey
-webase.node.mgr.appSecret
-webase.node.mgr.groupId
-webase.node.mgr.linkUrl
+- 查看服务日志
 
-修改文件存储目录
-store.dir
+```Bash
+tail -f logs/log/evi_chain.log        
 ```
 
 - 执行start.sh脚本
@@ -139,43 +183,84 @@ store.dir
 git clone https://github.com/YibiOpen/evidence-chain-demo.git
 ```
 
-- 执行mvn打包命令
-
-```
-mvn clean package -DskipTests
-```
-
 - 执行sql脚本
 
 ```
 在mysql中执行sql脚本，脚本文件在源代码资源db目录下，其中evi_ddl.sql为建表语句、evi_dml.sql为初始化语句
 ```
 
-- 修改application.properties配置文件
+在mysql中执行sql脚本，脚本文件在源代码资源db目录下，其中`evi_ddl.sql`为建表语句、`evi_dml.sql`为初始化语句
 
+以mysql用户root，密码为123456，创建数据库为`evi_chain`为例
+```Bash
+# 创建DB
+mysql -uroot -p123456 -e "create database evi_chain;"
+# 执行脚本
+cd conf/db/
+# 建表
+mysql -uroot -p123456 -D evi_chain -e "source ./evi_ddl.sql"
+# 插入默认数据
+mysql -uroot -p123456 -D evi_chain -e "source ./evi_dml.sql"
 ```
-可以根据实际情况修改应用端口
-server.port=
 
-修改数据库配置
-spring.datasource.username
-spring.datasource.password
-spring.datasource.url
+- 修改conf目录下application.properties配置文件
 
-修改WeBASE Front配置
-webase-front.contract.deploy.url
-webase-front.trans.handle.url
-webase-front.trans.query.url
+```Bash
+# 可以根据实际情况修改应用端口
+server.port=9081
 
-修改WeBASE Node配置
-webase.node.mgr.url
-webase.node.mgr.appKey
-webase.node.mgr.appSecret
-webase.node.mgr.groupId
-webase.node.mgr.linkUrl
+### 修改数据库配置
+# mysql用户
+spring.datasource.username=dbUsername
+# mysql密码
+spring.datasource.password=dbPassword
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/evi_chain?autoCommit=false&useUnicode=true&characterEncoding=utf-8\
+  &serverTimezone=Asia/Shanghai
 
-修改文件存储目录
-store.dir
+### 修改webase-front服务IP、端口与接口
+# webase前置服务1.2. 合约部署接口（结合WeBASE-Sign）
+webase-front.contract.deploy.url=http://127.0.0.1:5002/WeBASE-Front/contract/deployWithSign
+# webase前置服务5.1. 交易处理接口（结合WeBASE-Sign）
+webase-front.trans.handle.url=http://127.0.0.1:5002/WeBASE-Front/trans/handleWithSign
+# webase前置服务5.4. 已编码查询交易发送
+webase-front.trans.query.url=http://127.0.0.1:5002/WeBASE-Front/trans/query-transaction
+
+# 修改在webase管理台中应用管理生成的配置
+# webase-node-manager后台IP与端口
+webase.node.mgr.url=http://127.0.0.1:5001
+# webase管控台新建应用生成的url地址
+webase.node.mgr.appKey=zhf3mNPA
+# webase管控台新建应用生成的url地址
+webase.node.mgr.appSecret=bn5BRGsNczszJmFT3urrUg6aZmSVf2KS
+# 加密传输
+webase.node.mgr.transferEncrypt=true
+# 默认群组
+webase.node.mgr.groupId=1
+
+# webase应用外链地址，即本项目的前端访问URL，本项目则是http://ip:port/evidence/index.html
+webase.node.mgr.linkUrl=http://127.0.0.2:9081/evidence/index.html
+
+# 存证附件存储目录
+store.dir=/data/evidence-chain-demo-master/evi_store
+```
+
+- 在`pom.xml`所在目录，打包jar
+
+```Bash
+# maven 编译
+mvn clean package -Dmaven.test.skip=true
+```
+打包完成后会得到`target`目录
+
+- 运行程序
+```Bash
+cd target/
+nohup java -jar evidence-chain-demo-1.0.0-SNAPSHOT.jar > nohup.out 2>&1 &
+```
+
+- 查看日志
+```
+tail -f logs/log/evi_chain.log
 ```
 
 ### 4.4.区块链电子存证平台演示
