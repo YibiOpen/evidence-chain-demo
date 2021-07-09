@@ -96,8 +96,8 @@ https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE/install.html
 - 获取发布包，并解压
 
 ```
-wget -c https://github.com/YibiOpen/evidence-chain-demo/releases/download/1.0.0/evidnece-chain-demo-1.0.0.tar.gz
-tar -xvf evidnece-chain-demo-1.0.0.tar.gz
+wget -c https://github.com/YibiOpen/evidence-chain-demo/releases/download/1.0.1/evidence-chain-demo-1.0.1.tar.gz
+tar -xvf evidence-chain-demo-1.0.1.tar.gz
 cd evidnece-chain-demo/
 ```
 
@@ -255,7 +255,7 @@ mvn clean package -Dmaven.test.skip=true
 - 运行程序
 ```Bash
 cd target/
-nohup java -jar evidence-chain-demo-1.0.0-SNAPSHOT.jar > nohup.out 2>&1 &
+nohup java -jar evidence-chain-demo-1.0.1-SNAPSHOT.jar > nohup.out 2>&1 &
 ```
 
 - 查看日志
