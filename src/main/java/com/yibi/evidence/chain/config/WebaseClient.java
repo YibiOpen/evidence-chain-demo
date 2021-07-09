@@ -39,8 +39,10 @@ public class WebaseClient {
     public WebaseClient(WebaseConfig webaseConfig) {
         this.webaseConfig = webaseConfig;
         HttpConfig httpConfig = new HttpConfig(DEFAULT_TIMEOUT, DEFAULT_TIMEOUT, DEFAULT_TIMEOUT);
-        appClient = new AppClient(webaseConfig.getUrl(), webaseConfig.getAppKey(), webaseConfig.getAppSecret(),
+        this.appClient = new AppClient(webaseConfig.getUrl(), webaseConfig.getAppKey(), webaseConfig.getAppSecret(),
                 webaseConfig.isTransferEncrypt(), httpConfig);
+        // register
+        this.appRegister();
     }
 
     /**
@@ -74,15 +76,15 @@ public class WebaseClient {
      */
     public EviResponse appRegister() {
         ReqAppRegister req = new ReqAppRegister();
-        String linkUrl = webaseConfig.getLinkUrl();
+        String linkUrl = this.webaseConfig.getLinkUrl();
         Pair<String, Integer> hostAndPort = UrlUtils.getHostAndPort(linkUrl);
         if (null == hostAndPort) {
-            return EviResponse.error("配置应用注册链接不正确");
+            return EviResponse.error("配置应用注册链接不正确，format example:[http://{ip}:{port}/index.html]");
         }
         req.setAppIp(hostAndPort.getKey());
         req.setAppPort(hostAndPort.getValue());
         req.setAppLink(linkUrl);
-        appClient.appRegister(req);
+        this.appClient.appRegister(req);
         return EviResponse.ok();
     }
 
