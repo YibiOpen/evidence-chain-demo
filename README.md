@@ -110,7 +110,7 @@ cd evidnece-chain-demo/
 # 创建DB
 mysql -uroot -p123456 -e "create database evi_chain;"
 # 执行脚本
-cd conf/db/
+cd db/
 # 建表
 mysql -uroot -p123456 -D evi_chain -e "source ./evi_ddl.sql"
 # 插入默认数据
@@ -172,7 +172,6 @@ bash start.sh
 tail -f logs/log/evi_chain.log        
 ```
 
-- 执行start.sh脚本
 - 区块链电子存证平台部署完成后，浏览器地址栏输入：http://ip:port/evidence/index.html，初始用户名和密码分别为：eviAdmin/ABC123
 
 #### 4.3.3源码部署
@@ -193,7 +192,7 @@ git clone https://github.com/YibiOpen/evidence-chain-demo.git
 # 创建DB
 mysql -uroot -p123456 -e "create database evi_chain;"
 # 执行脚本
-cd conf/db/
+cd db/
 # 建表
 mysql -uroot -p123456 -D evi_chain -e "source ./evi_ddl.sql"
 # 插入默认数据
