@@ -98,7 +98,7 @@ https://webasedoc.readthedocs.io/zh_CN/latest/docs/WeBASE/install.html
 ```
 wget -c https://github.com/YibiOpen/evidence-chain-demo/releases/download/1.0.1/evidence-chain-demo-1.0.1.tar.gz
 tar -xvf evidence-chain-demo-1.0.1.tar.gz
-cd evidnece-chain-demo/
+cd evidence-chain-demo/
 ```
 
 - 初始化数据库，执行sql脚本
