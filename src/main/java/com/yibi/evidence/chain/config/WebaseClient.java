@@ -17,6 +17,8 @@ import com.yibi.evidence.chain.response.EviResponse;
 import com.yibi.evidence.chain.util.DateUtils;
 import com.yibi.evidence.chain.util.UrlUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ import java.util.List;
  */
 @Slf4j
 @Component
-public class WebaseClient {
+public class WebaseClient implements ApplicationListener<ApplicationReadyEvent> {
     /**默认超时时间为30s*/
     private static final Integer DEFAULT_TIMEOUT = 30;
 
@@ -41,8 +43,6 @@ public class WebaseClient {
         HttpConfig httpConfig = new HttpConfig(DEFAULT_TIMEOUT, DEFAULT_TIMEOUT, DEFAULT_TIMEOUT);
         this.appClient = new AppClient(webaseConfig.getUrl(), webaseConfig.getAppKey(), webaseConfig.getAppSecret(),
                 webaseConfig.isTransferEncrypt(), httpConfig);
-        // register
-        this.appRegister();
     }
 
     /**
@@ -163,5 +163,11 @@ public class WebaseClient {
         reqContractAddressSave.setContractAddress(contractAddr);
         log.info("调用WebaseSdk AddressSave接口,请求参数:>>{}", JSONUtil.toJsonStr(reqContractAddressSave));
         appClient.contractAddressSave(reqContractAddressSave);
+    }
+
+    @Override
+    public void onApplicationEvent(ApplicationReadyEvent event) {
+        // register
+        this.appRegister();
     }
 }
