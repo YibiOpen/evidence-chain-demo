@@ -297,7 +297,7 @@ tail -f logs/log/evi_chain.log
 
 #### 4.4.5节点管理
 
-产品管理页面用于展示已经维护好的存证节点，且可以进行新建和修改，一个节点代表了一个实际业务下的某个环节或步骤。
+节点管理页面用于展示已经维护好的存证节点，且可以进行新建和修改，一个节点代表了一个实际业务下的某个环节或步骤。
 
 ![](https://github.com/maochaowu/evidenceImage/blob/main/%E8%8A%82%E7%82%B9%E7%AE%A1%E7%90%86.png?raw=true)
 
